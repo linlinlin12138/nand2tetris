@@ -1,0 +1,55 @@
+function Screen.init 0
+push constant 16384
+pop static 0
+push constant 0
+pop static 4
+push constant 1
+neg  
+pop static 5
+push constant 0
+pop static 2
+push constant 1
+pop static 3
+push static 5
+pop static 1
+push constant 0
+return  
+function Screen.clearScreen 1
+push constant 0
+pop local 0
+label label1 
+push local 0
+push constant 8192
+lt  
+not  
+if-goto label2 
+push static 0
+push local 0
+add  
+push static 4
+pop temp 1
+pop pointer 1
+push temp 1
+pop that 0
+goto label1 
+label label2 
+push constant 0
+return  
+function Screen.setColor 0
+push argument 0
+pop static 1
+push constant 0
+return  
+function Screen.drawPixel 2
+push argument 1
+push constant 32
+call Math.multiply 2  
+push argument 0
+push constant 16
+call Math.divide 2  
+add  
+pop local 0
+push argument 0
+push constant 15
+and  
+call Math.two_to_the 1
